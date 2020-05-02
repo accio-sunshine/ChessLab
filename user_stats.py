@@ -27,6 +27,7 @@ with open('chess_master.csv', mode='w', newline='') as csv_file:
         response = requests.get(m[p])
         data_1 = json.loads(response.content)
         l = data_1["games"]
+        n=0
         while (n < len(l)):
             ts_epoch = l[n]["end_time"]
             ts = datetime.datetime.fromtimestamp(ts_epoch).strftime('%Y-%m-%d %H:%M:%S')
@@ -43,7 +44,7 @@ with open('chess_master.csv', mode='w', newline='') as csv_file:
             k= k+1
             n = n+1
         p=p+1
-n=0
+
 
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds',
@@ -70,6 +71,7 @@ elif cont =="Y" :
             response = requests.get(m[p])
             data_1 = json.loads(response.content)
             l = data_1["games"]
+            n=0
             while (n < len(l)):
                 ts_epoch = l[n]["end_time"]
                 ts = datetime.datetime.fromtimestamp(ts_epoch).strftime('%Y-%m-%d %H:%M:%S')
@@ -87,7 +89,7 @@ elif cont =="Y" :
                     k= k+1
                 n = n+1
             p=p+1
-    n=0
+    
     scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
     creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
